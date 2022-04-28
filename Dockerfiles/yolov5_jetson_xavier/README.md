@@ -10,4 +10,4 @@ To use it, you just have to clone the repository, run the command "docker build 
 To run the docker image, just run the following command "docker run --rm -it --gpus all -v /path/to/volume:/volume_name_in_docker_container -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix docker_image_name"
 
 # Run an example of yolov5 with a single image
-python3 detect.py --source ./data/images/zidane.jpg --conf 0.5
+Once you have executed the previous command, and you are inside of the docker container, you can test yolov5 with the command: "python3 detect.py --source ./data/images/zidane.jpg --conf 0.5"
