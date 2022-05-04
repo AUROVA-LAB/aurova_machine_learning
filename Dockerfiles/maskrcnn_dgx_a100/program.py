@@ -868,7 +868,7 @@ if __name__ == '__main__':
     if args.command == "train":
 
         wandb.init(name='MaskRCNN - '+str(datetime.now()),
-                   project='MOMUE')
+                   project='Mask-RCNN training')
         subprocess.run(["wandb", "login", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"])
         wandb.config.name = config.NAME
         wandb.config.images_per_gpu = config.IMAGES_PER_GPU
