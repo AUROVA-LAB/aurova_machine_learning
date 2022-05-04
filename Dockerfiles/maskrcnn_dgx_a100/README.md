@@ -32,7 +32,11 @@ docker build -t aurova_maskrcnn .
 ```
 docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_maskrcnn -v /raid/aurova/docker/:/aurova_maskrcnn aurova_maskrcnn
 ```
-5. Inside the running docker, we are able to train or test. 
+5. Inside the running docker, we are able to run a demo: 
+```
+
+```
+6. After that, we are ready to train or test too. 
 - WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
 - WARNING: during the evaluation process match program.py backbone and the one used to train that weights.
 - WARNING: edit your wandb user ID in line 872 of program.py.
