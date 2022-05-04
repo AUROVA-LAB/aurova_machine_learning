@@ -10,6 +10,9 @@ After it, we installed the following packages:
 - Pycocotools
 - Wandb
 
+# Weights & biases
+For a complete experience, create an account on https://wandb.ai/site. It is free and will allow us to follow the training process from everywhere.
+
 # Example of use 
 1. Clone this repository and navigate to the path where the Dockerfile is:
 ```
