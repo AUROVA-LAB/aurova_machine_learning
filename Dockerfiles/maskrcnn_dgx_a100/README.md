@@ -11,8 +11,6 @@ After it, we installed the following packages:
 - Wandb
 
 # Example of use 
-0. Get cuDNN 8.1.0.77 (cudnn-11.2-linux-x64-v8.1.0.77.tgz) from https://developer.nvidia.com/cudnn and place it at the same level as the Dockerfile (~/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/). 
-
 1. Clone this repository and navigate to the path where the Dockerfile is:
 ```
 cd ~/
