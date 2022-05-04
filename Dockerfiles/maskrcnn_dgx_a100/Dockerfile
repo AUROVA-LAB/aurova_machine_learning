@@ -72,7 +72,7 @@ RUN rm /etc/ld.so.conf.d/nvidia.conf
 RUN rm /etc/ld.so.conf.d/x86_64-linux-gnu.conf
 
 # Wandb graphics
-#RUN pip3 install wandb
+RUN pip3 install wandb
 #RUN wandb login xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 
 # Path CUPTI
