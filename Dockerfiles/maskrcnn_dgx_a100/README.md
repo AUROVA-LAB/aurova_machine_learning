@@ -18,14 +18,14 @@ cd aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
 docker build -t aurova_maskrcnn .
 ```
 2. Once the image is built, we have to run it by using the following command. 
-WARNING: adjust --gpus (which GPU to use) and -v (path to share with docker) flags if needed.
+- WARNING: adjust --gpus (which GPU to use) and -v (path to share with docker) flags if needed.
 ```
 docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_maskrcnn -v /raid/aurova/docker/:/aurova_maskrcnn
 ```
 3. Inside the running docker, we are able to train or test. 
-WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
-WARNING: during the evaluation process match program.py backbone and the one used to train that weights.
-WARNING: edit your wandb user ID in line 872 of program.py.
+- WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
+- WARNING: during the evaluation process match program.py backbone and the one used to train that weights.
+- WARNING: edit your wandb user ID in line 872 of program.py.
 ```
 ldconfig && cd ../aurova_maskrcnn && python3.7 program.py train
 
