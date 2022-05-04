@@ -34,6 +34,7 @@ docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "de
 ```
 5. Inside the running docker, we are able to run a demo: 
 ```
+ldconfig && cd ../aurova_maskrcnn && python3.7 mask_rcnn.py --image sabana-africana-especies.jpg --saved_image new-sabana-africana-especies.jpg --weights mask_rcnn_coco.h5 
 
 ```
 6. After that, we are ready to train or test too. 
