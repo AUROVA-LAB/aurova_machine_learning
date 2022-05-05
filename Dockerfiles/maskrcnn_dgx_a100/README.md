@@ -22,20 +22,26 @@ cd aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
 ```
 2. Get cuDNN 8.1.0.77 (cudnn-11.2-linux-x64-v8.1.0.77.tgz) from https://developer.nvidia.com/cudnn and place it at the same level as the Dockerfile (~/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/). 
 
-3. Build the Dockerfile:
+3. Get coco weights (mask_rcnn_coco.h5) in order to test Mask-RCNN from https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiL5_ei-sf3AhXfgv0HHXyWDTAQFnoECBIQAQ&url=https%3A%2F%2Fgithub.com%2Fmatterport%2FMask_RCNN%2Freleases%2Fdownload%2Fv2.0%2Fmask_rcnn_coco.h5&usg=AOvVaw0nAUAmHpcXDQ6mPgV9NckR and place it at the same level as the Dockerfile (~/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/).
+
+4. Build the Dockerfile:
 ```
 docker build -t aurova_maskrcnn .
 ```
 
-4. Once the image is built, we have to run it by using the following command. 
+5. Once the image is built, we have to run it by using the following command. 
 - WARNING: adjust --gpus (which GPU to use) and -v (path to share with docker) flags if needed.
 ```
 docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_maskrcnn -v /raid/aurova/docker/:/aurova_maskrcnn aurova_maskrcnn
 ```
-5. Inside the running docker, we are able to run a demo: 
+6. Inside the running docker, we are able to run a demo: 
 ```
-ldconfig && cd ../aurova_maskrcnn && python3.7 mask_rcnn.py --image sabana-africana-especies.jpg --saved_image new-sabana-africana-especies.jpg --weights mask_rcnn_coco.h5 
+cd ../aurova_maskrcnn/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
+
+ldconfig && python3.7 mask_rcnn.py --image ./images/athletic.jpg --saved_image ./images/new_athletic.jpg --weights ./mask_rcnn_coco.h5 
+ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_image ./images/new_bilbao_council.jpg --weights ./mask_rcnn_coco.h5 
 ```
+
 # Train and eval
 After that, we are ready to train or test too. 
 - WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
