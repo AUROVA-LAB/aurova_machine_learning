@@ -39,35 +39,166 @@ cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.
 
 # Train and eval
 After that, we are ready to train or test too. 
-1. Edit your new classes in line 31 of program.py.
-2. Edit your Mask-RCNN config on lines 220 - 407.
-3. Edit your wandb user ID in line 872 of program.py.
+1. Edit config.py. You should add train/validation and test dataset paths (see lines 177-193 for reference).
+2. Edit config.py. You should also add the config for your neural network (see lines 798-869 & lines 917-976)
+3. Edit your wandb user ID in line 176 of train.py.
 4. Call the program taking into account available flags.
 ```
-Train Mask R-CNN on MS COCO.
-
-positional arguments:
-  <command>             'train' or 'evaluate' on MS COCO
+Yolact Training Script
 
 optional arguments:
   -h, --help            show this help message and exit
-  --dataset_train /path/to/coco_dataset_train/
-                        Directory of the MS-COCO training dataset
-  --dataset_val /path/to/coco_dataset_val/
-                        Directory of the MS-COCO validating dataset
-  --dataset_test /path/to/coco_dataset_test/
-                        Directory of the MS-COCO testing dataset
-  --model /path/to/weights.h5
-                        Path to weights .h5 file or 'coco'
-  --logs /path/to/logs/
-                        Logs and checkpoints directory
-  --save_test /path/to/result_test_images/
-                        Where to save results (analysed images)
-```
-```
-ldconfig && cd ../aurova_maskrcnn && python3.7 program.py train
+  --batch_size BATCH_SIZE
+                        Batch size for training
+  --resume RESUME       Checkpoint state_dict file to resume training from. If
+                        this is "interrupt", the model will resume training
+                        from the interrupt file.
+  --start_iter START_ITER
+                        Resume training at this iter. If this is -1, the
+                        iteration will be determined from the file name.
+  --num_workers NUM_WORKERS
+                        Number of workers used in dataloading
+  --cuda CUDA           Use CUDA to train model
+  --lr LR, --learning_rate LR
+                        Initial learning rate. Leave as None to read this from
+                        the config.
+  --momentum MOMENTUM   Momentum for SGD. Leave as None to read this from the
+                        config.
+  --decay DECAY, --weight_decay DECAY
+                        Weight decay for SGD. Leave as None to read this from
+                        the config.
+  --gamma GAMMA         For each lr step, what to multiply the lr by. Leave as
+                        None to read this from the config.
+  --save_folder SAVE_FOLDER
+                        Directory for saving checkpoint models.
+  --log_folder LOG_FOLDER
+                        Directory for saving logs.
+  --config CONFIG       The config object to use.
+  --save_interval SAVE_INTERVAL
+                        The number of iterations between saving the model.
+  --validation_size VALIDATION_SIZE
+                        The number of images to use for validation.
+  --validation_epoch VALIDATION_EPOCH
+                        Output validation information every n iterations. If
+                        -1, do no validation.
+  --keep_latest         Only keep the latest checkpoint instead of each one.
+  --keep_latest_interval KEEP_LATEST_INTERVAL
+                        When --keep_latest is on, don't delete the latest file
+                        at these intervals. This should be a multiple of
+                        save_interval or 0.
+  --dataset DATASET     If specified, override the dataset specified in the
+                        config with this one (example: coco2017_dataset).
+  --no_log              Don't log per iteration information into log_folder.
+  --log_gpu             Include GPU information in the logs. Nvidia-smi tends
+                        to be slow, so set this with caution.
+  --no_interrupt        Don't save an interrupt when KeyboardInterrupt is
+                        caught.
+  --batch_alloc BATCH_ALLOC
+                        If using multiple GPUS, you can set this to be a comma
+                        separated list detailing which GPUs should get what
+                        local batch size (It should add up to your total batch
+                        size).
+  --no_autoscale        YOLACT will automatically scale the lr and the number
+                        of iterations depending on the batch size. Set this if
+                        you want to disable that.
+  --initial_weights INITIAL_WEIGHTS
+                        Place where weights during training are stored.
 
-ldconfig && cd ../aurova_maskrcnn && python3.7 program.py evaluate
+```
+```
+YOLACT COCO Evaluation
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --trained_model TRAINED_MODEL
+                        Trained state_dict file path to open. If "interrupt",
+                        this will open the interrupt file.
+  --top_k TOP_K         Further restrict the number of predictions to parse
+  --cuda CUDA           Use cuda to evaulate model
+  --fast_nms FAST_NMS   Whether to use a faster, but not entirely correct
+                        version of NMS.
+  --cross_class_nms CROSS_CLASS_NMS
+                        Whether compute NMS cross-class or per-class.
+  --display_masks DISPLAY_MASKS
+                        Whether or not to display masks over bounding boxes
+  --display_bboxes DISPLAY_BBOXES
+                        Whether or not to display bboxes around masks
+  --display_text DISPLAY_TEXT
+                        Whether or not to display text (class [score])
+  --display_scores DISPLAY_SCORES
+                        Whether or not to display scores in addition to
+                        classes
+  --display             Display qualitative results instead of quantitative
+                        ones.
+  --shuffle             Shuffles the images when displaying them. Doesn't have
+                        much of an effect when display is off though.
+  --ap_data_file AP_DATA_FILE
+                        In quantitative mode, the file to save detections
+                        before calculating mAP.
+  --resume              If display not set, this resumes mAP calculations from
+                        the ap_data_file.
+  --max_images MAX_IMAGES
+                        The maximum number of images from the dataset to
+                        consider. Use -1 for all.
+  --output_coco_json    If display is not set, instead of processing IoU
+                        values, this just dumps detections into the coco json
+                        file.
+  --bbox_det_file BBOX_DET_FILE
+                        The output file for coco bbox results if
+                        --coco_results is set.
+  --mask_det_file MASK_DET_FILE
+                        The output file for coco mask results if
+                        --coco_results is set.
+  --config CONFIG       The config object to use.
+  --output_web_json     If display is not set, instead of processing IoU
+                        values, this dumps detections for usage with the
+                        detections viewer web thingy.
+  --web_det_path WEB_DET_PATH
+                        If output_web_json is set, this is the path to dump
+                        detections into.
+  --no_bar              Do not output the status bar. This is useful for when
+                        piping to a file.
+  --display_lincomb DISPLAY_LINCOMB
+                        If the config uses lincomb masks, output a
+                        visualization of how those masks are created.
+  --benchmark           Equivalent to running display mode but without
+                        displaying an image.
+  --no_sort             Do not sort images by hashed image ID.
+  --seed SEED           The seed to pass into random.seed. Note: this is only
+                        really for the shuffle and does not (I think) affect
+                        cuda stuff.
+  --mask_proto_debug    Outputs stuff for scripts/compute_mask.py.
+  --no_crop             Do not crop output masks with the predicted bounding
+                        box.
+  --image IMAGE         A path to an image to use for display.
+  --images IMAGES       An input folder of images and output folder to save
+                        detected images. Should be in the format
+                        input->output.
+  --video VIDEO         A path to a video to evaluate on. Passing in a number
+                        will use that index webcam.
+  --video_multiframe VIDEO_MULTIFRAME
+                        The number of frames to evaluate in parallel to make
+                        videos play at higher fps.
+  --score_threshold SCORE_THRESHOLD
+                        Detections with a score under this threshold will not
+                        be considered. This currently only works in display
+                        mode.
+  --dataset DATASET     If specified, override the dataset specified in the
+                        config with this one (example: coco2017_dataset).
+  --detect              Don't evauluate the mask branch at all and only do
+                        object detection. This only works for --display and
+                        --benchmark.
+  --display_fps         When displaying / saving video, draw the FPS on the
+                        frame
+  --emulate_playback    When saving a video, emulate the framerate that you'd
+                        get running in real-time mode.
+  --map_test MAP_TEST   If you want to get mAP of test dataset, add --map_test
+
+```
+```
+cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py
+
+cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 train.py
 ```
 
-EXTRA: during the evaluation process match program.py backbone and the one used to train that weights.
+EXTRA: during the evaluation process match eval.py trained model and the config chosen.
