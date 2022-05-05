@@ -35,7 +35,7 @@ cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.
 
 cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_plus_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/images/marcha.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/images/new_marcha.jpg --config=yolact_plus_base_config --top_k=50
 ```
-<img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_zebra.jpg" width="503"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_marcha.jpg" width="503">
+<img src="/Dockerfiles/yolact_dgx_a100/images/new_zebra.jpg" width="503"> <img src="/Dockerfiles/yolact_dgx_a100/images/new_marcha.jpg" width="503">
 
 # Train and eval
 After that, we are ready to train or test too. 
