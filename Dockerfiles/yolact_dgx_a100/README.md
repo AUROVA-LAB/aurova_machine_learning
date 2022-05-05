@@ -19,26 +19,25 @@ cd ~/
 git clone https://github.com/AUROVA-LAB/aurova_machine_learning.git
 cd aurova_machine_learning/Dockerfiles/yolact_dgx_a100/
 ```
-4. Build the Dockerfile:
+2. Get coco weights (yolact_resnet50_54_800000.pth, yolact_darknet53_54_800000.pth, yolact_base_54_800000.pth, yolact_plus_resnet50_54_800000.pth and yolact_plus_base_54_800000.pth) in order to test Yolact from https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/EUVpxoSXaqNIlssoLKOEoCcB1m0RpzGq_Khp5n1VX3zcUw, https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/ERrao26c8llJn25dIyZPhwMBxUp2GdZTKIMUQA3t0djHLw, https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/EYRWxBEoKU9DiblrWx2M89MBGFkVVB_drlRd_v5sdT3Hgg, https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/EcJAtMiEFlhAnVsDf00yWRIBUC4m8iE9NEEiV05XwtEoGw and https://ucdavis365-my.sharepoint.com/:u:/g/personal/yongjaelee_ucdavis_edu/EVQ62sF0SrJPrl_68onyHF8BpG7c05A8PavV4a849sZgEA and place it at the same level as the Dockerfile (~/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/).
+3. Build the Dockerfile:
 ```
 docker build -t aurova_yolact .
 ```
-
-
-3. Get coco weights (mask_rcnn_coco.h5) in order to test Mask-RCNN from https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiL5_ei-sf3AhXfgv0HHXyWDTAQFnoECBIQAQ&url=https%3A%2F%2Fgithub.com%2Fmatterport%2FMask_RCNN%2Freleases%2Fdownload%2Fv2.0%2Fmask_rcnn_coco.h5&usg=AOvVaw0nAUAmHpcXDQ6mPgV9NckR and place it at the same level as the Dockerfile (~/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/).
-
-
-5. Once the image is built, we have to run it by using the following command. 
+4. Once the image is built, we have to run it by using the following command. 
 - WARNING: adjust --gpus (which GPU to use) and -v (path to share with docker) flags if needed.
 ```
-docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_maskrcnn -v /raid/aurova/docker/:/aurova_maskrcnn aurova_maskrcnn
+docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_yolact -v /raid/aurova/docker/:/aurova_yolact aurova_yolact
 ```
-6. Inside the running docker, we are able to run a demo. See below two examples.
+5. Inside the running docker, we are able to run a demo. See below two examples.
 ```
-cd ../aurova_maskrcnn/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
+cd yolact
 
-ldconfig && python3.7 mask_rcnn.py --image ./images/athletic.jpg --saved_image ./images/new_athletic.jpg --weights ./mask_rcnn_coco.h5 
-ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_image ./images/new_bilbao_council.jpg --weights ./mask_rcnn_coco.h5 
+python3.7 eval.py --trained_model ./yolact_base_54_800000.pth --image ./athletic.jpg:./new_athletic.jpg --config=yolact_base_config --top_k=1 
+
+root@64c4ad9bed27:/workspace/yolact# python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/athletic.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/new_athletic.jpg --config=yolact_base_config --top_k=1
+
+ root@64c4ad9bed27:/workspace# cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_plus_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/athletic.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/new_athletic.jpg --config=yolact_plus_base_config --top_k=1
 ```
 <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_bilbao_council.jpg" width="503"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_athletic.jpg" width="503">
 
