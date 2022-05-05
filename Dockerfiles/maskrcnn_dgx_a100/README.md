@@ -41,7 +41,7 @@ cd ../aurova_maskrcnn/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
 ldconfig && python3.7 mask_rcnn.py --image ./images/athletic.jpg --saved_image ./images/new_athletic.jpg --weights ./mask_rcnn_coco.h5 
 ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_image ./images/new_bilbao_council.jpg --weights ./mask_rcnn_coco.h5 
 ```
-<img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_bilbao_council.jpg" width="505"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_athletic.jpg" width="505">
+<img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_bilbao_council.jpg" width="504"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_athletic.jpg" width="504">
 
 # Train and eval
 After that, we are ready to train or test too. 
