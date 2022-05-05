@@ -2,13 +2,13 @@
 To create this Dockerfile, we used nvcr.io/nvidia/tensorflow:20.11-tf2-py3 as initial docker image. It is specifically optimized for NVIDIA DGX A100 and includes several packages such as Ubuntu 18.04, Tensorflow, NVIDIA CUDA 11.1.0 or NVIDIA cuDNN 8.0.4. All the information can be checked at https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow.
 
 After it, we installed the following packages:
-- Python 3.7.3
-- Pip
-- Cuda 11.2.0
-- Cudnn 8.1.0
-- Mask RCNN
-- Pycocotools
-- Wandb
+- python 3.7.3
+- pip
+- cuda 11.2.0
+- cudnn 8.1.0
+- mask RCNN
+- pycocotools
+- wandb
 
 # Weights & biases
 For a complete experience, create an account on https://wandb.ai/site. It is free and will allow us to follow the training process from everywhere.
