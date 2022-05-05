@@ -36,7 +36,8 @@ docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "de
 ```
 ldconfig && cd ../aurova_maskrcnn && python3.7 mask_rcnn.py --image sabana-africana-especies.jpg --saved_image new-sabana-africana-especies.jpg --weights mask_rcnn_coco.h5 
 ```
-6. After that, we are ready to train or test too. 
+#Train and eval
+After that, we are ready to train or test too. 
 - WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
 - WARNING: during the evaluation process match program.py backbone and the one used to train that weights.
 - WARNING: edit your wandb user ID in line 872 of program.py.
