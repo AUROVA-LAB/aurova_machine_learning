@@ -68,7 +68,7 @@ RUN git clone https://github.com/MatthewHowe/DCNv2.git
 RUN cd DCNv2/DCN/ && ls && cp dcn_v2.py ../
 RUN python3.7 DCNv2/setup.py build develop
 
-COPY original_train.py ./yolact/train.py
+COPY train.py ./yolact/train.py
 COPY config.py ./yolact/data/
 COPY coco.py ./yolact/data/
 COPY eval.py ./yolact/
