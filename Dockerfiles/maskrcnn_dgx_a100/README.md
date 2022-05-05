@@ -34,13 +34,14 @@ docker build -t aurova_maskrcnn .
 ```
 docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "device=2" --rm -it --name aurova_maskrcnn -v /raid/aurova/docker/:/aurova_maskrcnn aurova_maskrcnn
 ```
-6. Inside the running docker, we are able to run a demo: 
+6. Inside the running docker, we are able to run a demo. See below two examples.
 ```
 cd ../aurova_maskrcnn/aurova_machine_learning/Dockerfiles/maskrcnn_dgx_a100/
 
 ldconfig && python3.7 mask_rcnn.py --image ./images/athletic.jpg --saved_image ./images/new_athletic.jpg --weights ./mask_rcnn_coco.h5 
 ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_image ./images/new_bilbao_council.jpg --weights ./mask_rcnn_coco.h5 
 ```
+<img src="/images/new_bilbao_council.jpg" width="400"> <img src="/images/new_athletic.jpg" width="445">
 
 # Train and eval
 After that, we are ready to train or test too. 
