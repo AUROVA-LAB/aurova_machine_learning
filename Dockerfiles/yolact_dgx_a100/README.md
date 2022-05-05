@@ -1,5 +1,5 @@
 # Info about machine learning docker image for dgx
-To create this Dockerfile, we used nvcr.io/nvidia/tensorflow:20.11-tf2-py3 as initial docker image. It is specifically optimized for NVIDIA DGX A100 and includes several packages such as Ubuntu 18.04, Tensorflow, NVIDIA CUDA 11.1.0 or NVIDIA cuDNN 8.0.4. We have a kernel version of 5.4.0-66-generic, NVIDIA-SMI at 450.102.04 version with CUDA at 11.0. All the information can be checked at https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow.
+To create this Dockerfile, we used nvcr.io/nvidia/tensorflow:20.11-tf2-py3 as initial docker image. It is specifically optimized for NVIDIA DGX A100 and includes several packages such as Ubuntu 18.04, Tensorflow, NVIDIA CUDA 11.1.0 or NVIDIA cuDNN 8.0.4. All the information can be checked at https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow. Also, we have a kernel version of 5.4.0-66-generic, NVIDIA-SMI at 450.102.04 version with CUDA at 11.0.
 
 After it, we installed the following packages:
 - python 3.7.3
