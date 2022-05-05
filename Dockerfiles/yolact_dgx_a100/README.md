@@ -4,11 +4,10 @@ To create this Dockerfile, we used nvcr.io/nvidia/tensorflow:20.11-tf2-py3 as in
 After it, we installed the following packages:
 - python 3.7.3
 - pip
-- cuda 11.2.0
-- cudnn 8.1.0
-- mask RCNN
-- pycocotools
+- cuda 11.1.0
+- lzma headers
 - wandb
+- yolact
 
 # Weights & biases
 For a complete experience, create an account on https://wandb.ai/site. It is free and will allow us to follow the training process from everywhere.
