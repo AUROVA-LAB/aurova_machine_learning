@@ -50,12 +50,25 @@ After that, we are ready to train or test too.
 3. Edit your wandb user ID in line 872 of program.py.
 4. Call the program taking into account available flags.
 ```
-usage: program.py [-h] [--dataset_train /path/to/coco_dataset_train/]
-                  [--dataset_val /path/to/coco_dataset_val/]
-                  [--dataset_test /path/to/coco_dataset_test/] --model
-                  /path/to/weights.h5 --logs /path/to/logs/
-                  [--save_test /path/to/result_test_images/]
-                  <command>
+Train Mask R-CNN on MS COCO.
+
+positional arguments:
+  <command>             'train' or 'evaluate' on MS COCO
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_train /path/to/coco_dataset_train/
+                        Directory of the MS-COCO training dataset
+  --dataset_val /path/to/coco_dataset_val/
+                        Directory of the MS-COCO validating dataset
+  --dataset_test /path/to/coco_dataset_test/
+                        Directory of the MS-COCO testing dataset
+  --model /path/to/weights.h5
+                        Path to weights .h5 file or 'coco'
+  --logs /path/to/logs/
+                        Logs and checkpoints directory
+  --save_test /path/to/result_test_images/
+                        Where to save results (analysed images)
 ```
 ```
 ldconfig && cd ../aurova_maskrcnn && python3.7 program.py train
