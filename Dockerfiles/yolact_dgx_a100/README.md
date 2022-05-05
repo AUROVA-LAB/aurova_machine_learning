@@ -31,15 +31,11 @@ docker run --shm-size=6gb --ulimit memlock=-1 --ulimit stack=67108864 --gpus "de
 ```
 5. Inside the running docker, we are able to run a demo. See below two examples.
 ```
-cd yolact
+cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/athletic.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/new_athletic.jpg --config=yolact_base_config --top_k=5
 
-python3.7 eval.py --trained_model ./yolact_base_54_800000.pth --image ./athletic.jpg:./new_athletic.jpg --config=yolact_base_config --top_k=1 
-
-root@64c4ad9bed27:/workspace/yolact# python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/athletic.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/new_athletic.jpg --config=yolact_base_config --top_k=1
-
- root@64c4ad9bed27:/workspace# cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_plus_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/athletic.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/new_athletic.jpg --config=yolact_plus_base_config --top_k=1
+cd DCNv2/ && python3.7 setup.py build develop && cd ../yolact && python3.7 eval.py --trained_model ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/yolact_plus_base_54_800000.pth --image ../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/images/marcha.jpg:../../aurova_yolact/aurova_machine_learning/Dockerfiles/yolact_dgx_a100/images/new_marcha.jpg --config=yolact_plus_base_config --top_k=50
 ```
-<img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_bilbao_council.jpg" width="503"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_athletic.jpg" width="503">
+<img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_zebra.jpg" width="503"> <img src="/Dockerfiles/maskrcnn_dgx_a100/images/new_marcha.jpg" width="503">
 
 # Train and eval
 After that, we are ready to train or test too. 
