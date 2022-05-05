@@ -47,10 +47,20 @@ ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_i
 After that, we are ready to train or test too. 
 1. Edit your new classes in line 31 of program.py.
 2. Edit your Mask-RCNN config on lines 220 - 407.
-3. Edit your wandb user ID in line 872 of program.py
-EXTRA: during the evaluation process match program.py backbone and the one used to train that weights.
+3. Edit your wandb user ID in line 872 of program.py.
+4. Call the program taking into account available flags.
+```
+usage: program.py [-h] [--dataset_train /path/to/coco_dataset_train/]
+                  [--dataset_val /path/to/coco_dataset_val/]
+                  [--dataset_test /path/to/coco_dataset_test/] --model
+                  /path/to/weights.h5 --logs /path/to/logs/
+                  [--save_test /path/to/result_test_images/]
+                  <command>
+```
 ```
 ldconfig && cd ../aurova_maskrcnn && python3.7 program.py train
 
 ldconfig && cd ../aurova_maskrcnn && python3.7 program.py evaluate
 ```
+
+EXTRA: during the evaluation process match program.py backbone and the one used to train that weights.
