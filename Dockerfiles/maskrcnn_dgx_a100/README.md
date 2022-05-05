@@ -45,9 +45,10 @@ ldconfig && python3.7 mask_rcnn.py --image ./images/bilbao_council.jpg --saved_i
 
 # Train and eval
 After that, we are ready to train or test too. 
-- WARNING: to choose which backbone to use, we must edit program.py in line 250. Available options are resnet50 or resnet101.
-- WARNING: during the evaluation process match program.py backbone and the one used to train that weights.
-- WARNING: edit your wandb user ID in line 872 of program.py.
+1. Edit your new classes in line 31 of program.py.
+2. Edit your Mask-RCNN config on lines 220 - 407.
+3. Edit your wandb user ID in line 872 of program.py
+EXTRA: during the evaluation process match program.py backbone and the one used to train that weights.
 ```
 ldconfig && cd ../aurova_maskrcnn && python3.7 program.py train
 
