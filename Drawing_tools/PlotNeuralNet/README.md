@@ -1,6 +1,6 @@
 # PlotNeuralNet
 
-Basaed on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396).
+Based on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396)].
 Latex code for drawing neural networks for reports and presentation on Ubuntu 18.04.6 LTS. Applied some minor changes to improve its usability (see botom of the README.md). 
 
 ## Examples
@@ -59,7 +59,7 @@ arch = [
     to_begin(),
     to_Conv("conv1", 512, 64, offset="(0,0,0)", to="(0,0,0)", height=64, depth=64, width=2, colour="{rgb:yellow,1.0;red,2.5;white,5}" ),
     to_Pool("pool1", offset="(0,0,0)", to="(conv1-east)"),
-    to_Conv("conv2", 128, 64, offset="(1,0,0)", to="(pool1-east)", height=32, depth=32, width=2, colour="{rgb:brown,1.0;green,3.0;white,5}" ),
+    to_Conv("conv2", 128, 64, offset="(1,0,0)", to="(pool1-east)", height=32, depth=32, width=2, colour="{rgb:yellow,1.0;red,2.5;white,10}" ),
     to_connection( "pool1", "conv2", origin="-east", destination="-west" ),
     to_Pool("pool2", offset="(0,0,0)", to="(conv2-east)", height=28, depth=28, width=1),
     to_SoftMax("soft1", 10 ,"(3,0,0)", "(pool1-east)", caption="SOFT"  ),
@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
 Now, run the program as follows:
 
-    bash ../tikzmake.sh my_arch
+    bash ../tikzmake.sh new_scheme
 
 ## Applied changes
 1. Added the option to choose the colour of each convolution block. It provides more customization. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/pycore/tikzeng.py the function to_Conv is changed from to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ") to to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ", colour="{rgb:yellow,5;red,2.5;white,5}" ).
