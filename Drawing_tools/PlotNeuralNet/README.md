@@ -1,51 +1,41 @@
 # PlotNeuralNet
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396)
 
-Latex code for drawing neural networks for reports and presentation.
+Latex code for drawing neural networks for reports and presentation on Ubuntu 18.04.6 LTS. Based on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396) with some minor changes. 
 
 ## Examples
-
 Following are some network representations:
 
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308846-c2231880-049c-11e9-8763-3daa1024de78.png" width="85%" height="85%"></p>
-<h6 align="center">FCN-8 (<a href="https://www.overleaf.com/read/kkqntfxnvbsk">view on Overleaf</a>)</h6>
 
-
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308873-e2eb6e00-049c-11e9-9587-9da6bdec011b.png" width="85%" height="85%"></p>
-<h6 align="center">FCN-32 (<a href="https://www.overleaf.com/read/wsxpmkqvjnbs">view on Overleaf</a>)</h6>
-
-
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308911-03b3c380-049d-11e9-92d9-ce15669017ad.png" width="85%" height="85%"></p>
-<h6 align="center">Holistically-Nested Edge Detection (<a href="https://www.overleaf.com/read/jxhnkcnwhfxp">view on Overleaf</a>)</h6>
-
-## Getting Started
-1. Install the following packages on Ubuntu.
+# Example of use 
+0. Install git and latex packages.
    * Ubuntu 18.04.2
-Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), please install the following packages.
+
         ```
+        sudo apt install git
         sudo apt-get install texlive-latex-base
         sudo apt-get install texlive-fonts-recommended
         sudo apt-get install texlive-fonts-extra
         sudo apt-get install texlive-latex-extra
         ```
-
-    * Windows
-    1. Download and install [MikTeX](https://miktex.org/download).
-    2. Download and install bash runner on Windows, recommends [Git bash](https://git-scm.com/download/win) or Cygwin(https://www.cygwin.com/)
+        
+1. Clone this repository and navigate to the path where the Dockerfile is:
+```
+cd ~/
+git clone https://github.com/AUROVA-LAB/aurova_machine_learning.git
+cd aurova_machine_learning/Drawing_tools/PlotNeuralNet/
+```
 
 2. Execute the example as followed.
     ```
     cd pyexamples/
     bash ../tikzmake.sh test_simple
     ```
+    
+3. In order to complete with texts the scheme, a pdf editor is needed (tested Adobe Acrobat DC).
 
 ## TODO
 
-- [ ] Add new examples.
-
-## Latex usage
-
-See [`examples`](examples) directory for usage.
+- [ ] Add examples.
 
 ## Python usage
 
@@ -89,5 +79,9 @@ Now, run the program as follows:
 
     bash ../tikzmake.sh my_arch
 
+## Applied changes
+1. Added the option to choose the colour of each convolution block. It provides more customization.
+
+2. Added the option to choose the origin and goal cardinal point (north, south, east or west) of the block as source and goal.
 
 
