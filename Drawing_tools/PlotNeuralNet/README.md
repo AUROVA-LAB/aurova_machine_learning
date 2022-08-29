@@ -1,7 +1,7 @@
 # PlotNeuralNet
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396)
 
-Latex code for drawing neural networks for reports and presentation. Have a look into examples to see how they are made. Additionally, lets consolidate any improvements that you make and fix any bugs to help more people with this code.
+Latex code for drawing neural networks for reports and presentation.
 
 ## Examples
 
@@ -20,12 +20,7 @@ Following are some network representations:
 
 ## Getting Started
 1. Install the following packages on Ubuntu.
-    * Ubuntu 16.04
-        ```
-        sudo apt-get install texlive-latex-extra
-        ```
-
-    * Ubuntu 18.04.2
+   * Ubuntu 18.04.2
 Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), please install the following packages.
         ```
         sudo apt-get install texlive-latex-base
@@ -46,10 +41,7 @@ Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), p
 
 ## TODO
 
-- [X] Python interface
-- [ ] Add easy legend functionality
-- [ ] Add more layer shapes like TruncatedPyramid, 2DSheet etc
-- [ ] Add examples for RNN and likes.
+- [ ] Add new examples.
 
 ## Latex usage
 
