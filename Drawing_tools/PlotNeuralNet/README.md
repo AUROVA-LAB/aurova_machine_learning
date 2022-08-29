@@ -1,6 +1,7 @@
 # PlotNeuralNet
 
-Based on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396)].
+Based on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396).
+
 Latex code for drawing neural networks for reports and presentation on Ubuntu 18.04.6 LTS. Applied some minor changes to improve its usability (see botom of the README.md). 
 
 ## Examples
