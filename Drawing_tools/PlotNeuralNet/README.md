@@ -81,8 +81,10 @@ Now, run the program as follows:
 -->
 
 ## Applied changes
-1. Added the option to choose the colour of each convolution block. It provides more customization. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/pycore/tikzeng.py the function to_Conv is changed from to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ") to to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ", colour="{rgb:yellow,5;red,2.5;white,5}" ).
+1. Make it work using python 3. Otherwise, in some examples, an error raise.  In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/tikzmake.sh the line number 4 is changed from "python $1.py" to "python3 $1.py". 
 
-2. Added the option to choose the origin and goal point (north, south, east or west) of the block as source and goal. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/pycore/tikzeng.py the function to_connection is changed from to_connection( of, to) to to_connection( of, to, origin="-east", destination="-west").
+2. Added the option to choose the colour of each convolution block. It provides more customization. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/pycore/tikzeng.py the function to_Conv is changed from to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ") to to_Conv( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" ", colour="{rgb:yellow,5;red,2.5;white,5}" ).
 
-3. Avoided that the program deletes the .tex generated file. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/tikzmake.sh a line is commented (#rm *.tex).
+3. Added the option to choose the origin and goal point (north, south, east or west) of the block as source and goal. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/pycore/tikzeng.py the function to_connection is changed from to_connection( of, to) to to_connection( of, to, origin="-east", destination="-west").
+
+4. Avoided that the program deletes the .tex generated file. In file ~/aurova_machine_learning/Drawing_tools/PlotNeuralNet/tikzmake.sh a line is commented (#rm *.tex).
